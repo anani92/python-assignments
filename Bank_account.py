@@ -5,7 +5,7 @@ class BankAccount:
 
   def deposit(self, amount):
     self.balance += amount
-    print(f'your current balance: {self.balance} and the interest rate is {self.int_rate}')
+    print(f'your current balance: {self.balance}')
     return self
 
   def withdraw(self, amount):
@@ -19,7 +19,7 @@ class BankAccount:
     return self
   def yield_interest(self):
     self.balance += (self.balance * self.int_rate)
-    print(f'your current balance: {self.balance} and the interest rate is {self.int_rate}')
+    print(f'your current balance: {self.balance}')
     return self
 
 
