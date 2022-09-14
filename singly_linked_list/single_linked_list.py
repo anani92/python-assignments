@@ -20,18 +20,44 @@ class singly_linked_list:
     new_node = Node(val)
     current_node = self.head
     while (current_node.next_node != None):
-      current_node = current_node.next_node
+      current_node = current_node.get_next_node()
     current_node.set_next_node(new_node)
-    print(current_node.value)
     return self
 
   def print_values(self):
-    runner = self.get_head_node()
+    runner = self.head
     while (runner):
-      if runner.get_value() != None:
+      if runner.value != None:
         print(runner.get_value())
       runner = runner.next_node
     return self
 
+  def remove_from_front(self):
+    current_head = self.head
+    self.head = current_head.next_node
+    return self
+  def remove_from_back(self):
+    current_node = self.head
+    while current_node:
+      current_node = current_node.get_next_node()
+      if current_node.next_node.next_node == None:
+        current_node = current_node.set_next_node(None)
+    return self
+  def remove_by_value(self, value_to_remove):
+    current_node = self.head
+    if current_node.get_value() == value_to_remove:
+      self.head_node = current_node.get_next_node()
+    while current_node:
+      next_node = current_node.get_next_node()
+      if next_node.value == value_to_remove:
+        current_node.set_next_node(next_node.get_next_node())
+        current_node = None
+      else:
+        current_node = next_node
+    return self
+
 my_list = singly_linked_list()
 my_list.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values()
+# my_list.remove_from_back().print_values()
+
+my_list.remove_by_value('are').print_values()
